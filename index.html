@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exams | جامعة المنصورة</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0b2447;--blue:#19376d;--gold:#b8922f;--gold2:#e9d9a6;--bg:#f4f6fa;--card:#fff;--ink:#16202e;--mute:#6b7686;--line:#e2e7ef}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+button{font-family:inherit;cursor:pointer;border:0}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+/* Nav */
+.nav{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.nav .in{max-width:1000px;margin:auto;padding:10px 20px;display:flex;align-items:center;gap:12px}
+.crest{width:46px;height:46px;flex:none}
+.uni b{display:block;font-size:1.05rem;color:var(--navy);font-weight:800;line-height:1.2}
+.uni span{font-size:.78rem;color:var(--mute)}
+.logo{margin-inline-start:auto;background:var(--navy);color:#fff;font-weight:800;font-size:1.15rem;padding:6px 18px;border-radius:30px;direction:ltr;letter-spacing:.3px}
+.logo i{font-style:normal;color:var(--gold2)}
+
+/* Hero */
+.hero{background:var(--navy);color:#fff;text-align:center;padding:44px 20px 70px;position:relative}
+.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:4px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.hero h1{font-size:clamp(1.6rem,4vw,2.3rem);font-weight:800}
+.hero p{color:#b9c6de;margin-top:6px}
+
+main{flex:1;width:100%;max-width:1000px;margin:-36px auto 0;padding:0 20px 50px}
+.crumbs{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:.9rem;color:var(--mute);margin-bottom:16px}
+.crumbs button{background:#fff;border:1px solid var(--line);padding:4px 14px;border-radius:20px;color:var(--blue);font-weight:700}
+.crumbs button:hover{background:var(--blue);color:#fff}
+.crumbs .cur{background:var(--gold);color:#fff;padding:4px 14px;border-radius:20px;font-weight:700}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px;box-shadow:0 8px 28px rgba(11,36,71,.07)}
+.panel>h2{font-size:1.2rem;color:var(--navy);margin-bottom:20px;font-weight:800;display:flex;align-items:center;gap:10px}
+.panel>h2::before{content:"";width:5px;height:22px;background:var(--gold);border-radius:3px}
+
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(260px,420px));justify-content:center}
+.g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+
+/* Circle avatar */
+.circ{width:118px;height:118px;border-radius:50%;padding:5px;background:conic-gradient(var(--gold),var(--gold2),var(--gold));flex:none;margin:auto}
+.circ svg{display:block;width:100%;height:100%;border-radius:50%;border:4px solid #fff}
+.circ.sm{width:56px;height:56px;padding:3px;margin:0}
+.circ.sm svg{border-width:2px}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px 18px 22px;text-align:center;display:flex;flex-direction:column;gap:10px;transition:.2s;color:inherit;width:100%}
+.card:hover{border-color:var(--gold);box-shadow:0 10px 24px rgba(11,36,71,.12);transform:translateY(-3px)}
+.card h3{font-size:1.25rem;color:var(--navy);font-weight:800;margin-top:6px}
+.card p{font-size:.9rem;color:var(--mute)}
+.btn{margin-top:4px;background:var(--navy);color:#fff;padding:8px 26px;border-radius:30px;font-weight:700;font-size:.92rem;align-self:center;transition:.2s}
+.card:hover .btn{background:var(--gold)}
+
+/* Subject rows */
+.list{display:flex;flex-direction:column;gap:12px}
+.row{display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:12px;padding:12px 16px;background:#fff;transition:.2s}
+.row:hover{border-color:var(--gold);background:#fffdf6}
+.row h3{font-size:1.02rem;color:var(--navy);font-weight:700}
+.row small{color:var(--mute)}
+.row .info{flex:1;min-width:0}
+.chip{background:#eef2f9;color:var(--blue);padding:2px 12px;border-radius:20px;font-size:.8rem;font-weight:500;white-space:nowrap}
+.row .btn{margin:0;align-self:auto;padding:7px 20px}
+.row .btn:hover{background:var(--gold)}
+.btn:disabled{background:#c9d1de!important;color:#fff;cursor:not-allowed}
+
+.tools{display:flex;gap:10px;margin-bottom:12px}
+.tools button{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);color:var(--navy);padding:8px 18px;border-radius:30px;font-weight:700;font-size:.92rem;transition:.2s}
+.tools button:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tools svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+footer{background:var(--navy);color:#b9c6de;text-align:center;padding:18px;font-size:.9rem;border-top:4px solid var(--gold)}
+footer b{color:var(--gold2);direction:ltr;unicode-bidi:embed;font-weight:800}
+@media(max-width:560px){.row{flex-wrap:wrap}.chip{display:none}.panel{padding:20px}.uni span{display:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="in">
+  <svg class="crest" viewBox="0 0 64 64" aria-hidden="true">
+    <circle cx="32" cy="32" r="30" fill="#0b2447"/><circle cx="32" cy="32" r="26" fill="none" stroke="#b8922f" stroke-width="2"/>
+    <path d="M13 28 32 18l19 10-19 10z" fill="#e9d9a6"/><path d="M22 35v9c0 5 20 5 20 0v-9l-10 5z" fill="#b8922f"/><path d="M51 28v13" stroke="#e9d9a6" stroke-width="2"/>
+  </svg>
+  <div class="uni"><b>جامعة المنصورة</b><span>كلية التربية النوعية</span></div>
+  <div class="logo">Ex<i>ams</i></div>
+</div></nav>
+
+<header class="hero"><h1 id="hT"></h1><p id="hX"></p></header>
+<main id="app"></main>
+<footer>تنفيذ شركة <b>OX Digital</b> &nbsp;•&nbsp; © 2026 جامعة المنصورة</footer>
+
+<script>
+const YEARS=["الثانية","الثالثة","الرابعة"];
+// كل مقرر: [اسم المقرر, رابط الفورم, اليوم, التاريخ]
+// الرابط بصيغة viewform أو preview. لو الرابط فاضي يظهر الزر "قريبًا" وغير مفعّل.
+// لو الفورم مختلف لكل فرع اكتب الرابط هكذا: {mansoura:"رابط",minyat:"رابط",mitghamr:"رابط"}
+const T="الساعة 9 مساءً";
+const DEPTS={
+ computer:{name:"معلم الحاسب الآلي",desc:"البرمجة وقواعد البيانات والذكاء الاصطناعي والوسائط المتعددة وتطبيقات الحاسب في التعليم",
+  subjects:[
+   [["نظم تشغيل حاسبات (2)","","السبت","31/10/2026"],
+    ["قواعد بيانات متقدم","","الأحد","01/11/2026"],
+    ["هياكل البيانات والخوارزميات","","الاثنين","02/11/2026"],
+    ["البرمجة الموجهة نحو الكائنات","","الثلاثاء","03/11/2026"],
+    ["الرسم بالحاسب (1)","","الأربعاء","04/11/2026"]],
+   [["برمجة متقدمة","","السبت","31/10/2026"],
+    ["الذكاء الاصطناعي","","الأحد","01/11/2026"],
+    ["الرسم بالحاسب (2)","","الاثنين","02/11/2026"],
+    ["تحليل البيانات","","الثلاثاء","03/11/2026"],
+    ["الوسائط المتعددة","","الأربعاء","04/11/2026"]],
+   [["النظم القائمة على المعرفة","","السبت","31/10/2026"],
+    ["برمجة تطبيقات المحمول","","الأحد","01/11/2026"],
+    ["هندسة البرمجيات","","الاثنين","02/11/2026"],
+    ["تطبيقات الحاسب الآلي في التعليم","","الثلاثاء","03/11/2026"]]]}
+};
+// ===== روابط الفورم: لكل مقرر رابط مختلف في كل فرع =====
+// ضع رابط الفورم بين علامتي التنصيص. الرابط الفاضي = زر "قريبًا".
+// m = المنصورة ، n = منية النصر ، g = ميت غمر
+const LINKS={
+ // الفرقة الثانية
+ "نظم تشغيل حاسبات (2)":{mansoura:"https://forms.gle/oeeQQi5751VqyN9H7",minyat:"https://forms.gle/8vvgARAUtUkjjXgm6",mitghamr:"https://forms.gle/F6CqarAJ5BJ1YSJK7"},
+ "قواعد بيانات متقدم":{mansoura:"https://forms.gle/1ve3toRvaongQ8bw7",minyat:"https://forms.gle/E1jo8FcnVLeAkUMq8",mitghamr:"https://forms.gle/m5K9h692LbLL7u2f8"},
+ "هياكل البيانات والخوارزميات":{mansoura:"https://forms.gle/2fvrsLvEXhoMq8ps7",minyat:"https://forms.gle/TPdELWkm8P7Gf5Jm7",mitghamr:"https://forms.gle/mcxFxfM6AHC2BC7w8"},
+ "البرمجة الموجهة نحو الكائنات":{mansoura:"https://forms.gle/RXN2iT5XWLHseijf8",minyat:"",mitghamr:""},
+ "الرسم بالحاسب (1)":{mansoura:"https://forms.gle/cRYrGvmMf8jiM8pF8",minyat:"https://forms.gle/263R9QcZ96qAybzUA",mitghamr:"https://forms.gle/MzpMAVQ6DjmT3wRg7"},
+ // الفرقة الثالثة
+ "برمجة متقدمة":{mansoura:"https://forms.gle/Xze9q3WwJcz3tHLf7",minyat:"https://forms.gle/rhchePb16RtcHRpy8",mitghamr:"https://forms.gle/xFcxfFxKRHuSrVsk9"},
+ "الذكاء الاصطناعي":{mansoura:"https://forms.gle/hRP3DbHFvd4ZX6Yy8",minyat:"https://forms.gle/8Vaafpw78kMUcE127",mitghamr:"https://forms.gle/1wzP5zpugzbggKgT7"},
+ "الرسم بالحاسب (2)":{mansoura:"https://forms.gle/WYgqLYETHfodg8L56",minyat:"https://forms.gle/yfgUEMb5ci1cxFNq7",mitghamr:"https://forms.gle/xjzrBQHnVpkJe1ps7"},
+ "تحليل البيانات":{mansoura:"https://forms.gle/mfoH1QTGfo5gS5F5A",minyat:"https://forms.gle/Fss2aVT5R28Zsin89",mitghamr:"https://forms.gle/taamggUM2WKvtrzEA"},
+ "الوسائط المتعددة":{mansoura:"https://forms.gle/SWCLrQaagmADrbSaA",minyat:"https://forms.gle/ub2ZmqhiX5njdB7c6",mitghamr:"https://forms.gle/ft43wmgbppEzDXzL6"},
+ // الفرقة الرابعة
+ "النظم القائمة على المعرفة":{mansoura:"https://forms.gle/Y2LLcp6B4M877Zfi8",minyat:"https://forms.gle/hSAF2ij5dN17uAVT8",mitghamr:"https://forms.gle/pzaukSSeTWgRrdKPA"},
+ "برمجة تطبيقات المحمول":{mansoura:"https://forms.gle/3wBcZWqAHMojjCL6A",minyat:"https://forms.gle/QBDTtttJx1gKV1kW8",mitghamr:"https://forms.gle/nskqKDytMMVBhnMm8"},
+ "هندسة البرمجيات":{mansoura:"https://forms.gle/arHzSwijzKf2wPWd6",minyat:"https://forms.gle/YTtESX1Z3s6gPsDM8",mitghamr:"https://forms.gle/GuiGZaV1xGXgQCug7"},
+ "تطبيقات الحاسب الآلي في التعليم":{mansoura:"https://forms.gle/tAxYWTP1y2FUh2ig6",minyat:"https://forms.gle/mcpAfvAWFwrFcJhQA",mitghamr:"https://forms.gle/u7ayzXD2VmHzVT5u9"}
+};
+const BG='<defs><linearGradient id="G" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#19376d"/><stop offset="1" stop-color="#0b2447"/></linearGradient></defs><rect width="120" height="120" fill="url(#G)"/>';
+const ART={
+computer:`<svg viewBox="0 0 120 120">${BG}<rect x="22" y="28" width="76" height="54" rx="7" fill="#fff"/><rect x="28" y="34" width="64" height="42" rx="3" fill="#0b2447"/><path d="M50 47l-9 8 9 8M70 47l9 8-9 8" stroke="#e9d9a6" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M64 44l-8 22" stroke="#b8922f" stroke-width="4" stroke-linecap="round"/><rect x="52" y="82" width="16" height="9" fill="#e9d9a6"/><rect x="38" y="91" width="44" height="6" rx="3" fill="#b8922f"/></svg>`
+};
+const yArt=n=>`<svg viewBox="0 0 120 120">${BG}<text x="60" y="82" text-anchor="middle" font-family="Tajawal" font-weight="800" font-size="68" fill="#e9d9a6">${n}</text></svg>`;
+const BRANCHES={
+ mansoura:{name:"فرع المنصورة",desc:"كلية التربية النوعية – المنصورة"},
+ minyat:{name:"فرع منية النصر",desc:"كلية التربية النوعية – منية النصر"},
+ mitghamr:{name:"فرع ميت غمر",desc:"كلية التربية النوعية – ميت غمر"}
+};
+const bArt=`<svg viewBox="0 0 120 120">${BG}<path d="M60 22c-16 0-28 12-28 28 0 22 28 46 28 46s28-24 28-46c0-16-12-28-28-28z" fill="#e9d9a6"/><circle cx="60" cy="50" r="11" fill="#0b2447" stroke="#b8922f" stroke-width="3"/></svg>`;
+const sArt=`<svg viewBox="0 0 120 120">${BG}<path d="M30 38h26c4 0 4 3 4 3v44s0-3-4-3H30zM90 38H64c-4 0-4 3-4 3v44s0-3 4-3h26z" fill="#e9d9a6"/></svg>`;
+
+const app=document.getElementById('app'),hT=document.getElementById('hT'),hX=document.getElementById('hX');
+const go=h=>location.hash=h;
+const crumbs=(p,back)=>`<div class="tools"><button onclick="go('${back}')"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>رجوع</button><button onclick="go('')"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg>الصفحة الرئيسية</button></div>
+<nav class="crumbs"><button onclick="go('')">الرئيسية</button>`+p.map(x=>x[1]!==undefined?`‹<button onclick="go('${x[1]}')">${x[0]}</button>`:`‹<span class="cur">${x[0]}</span>`).join('')+`</nav>`;
+
+function render(){
+  const [d,y,b]=location.hash.replace(/^#\/?/,'').split('/');
+  const dep=DEPTS[d];scrollTo(0,0);
+  if(!dep){
+    hT.textContent="منصة الامتحانات الإلكترونية";hX.textContent="اختر القسم للمتابعة";
+    app.innerHTML=`<div class="panel"><h2>الأقسام</h2><div class="grid g2">`+Object.entries(DEPTS).map(([k,v])=>
+    `<button class="card" onclick="go('/${k}')"><div class="circ">${ART[k]}</div><h3>${v.name}</h3><p>${v.desc}</p><span class="btn">دخول القسم</span></button>`).join('')+`</div></div>`;
+    return;
+  }
+  if(!y){
+    hT.textContent="قسم "+dep.name;hX.textContent="اختر الفرقة الدراسية";
+    app.innerHTML=crumbs([[dep.name]],'')+`<div class="panel"><h2>الفرق الدراسية</h2><div class="grid g4">`+YEARS.map((n,i)=>
+    `<button class="card" onclick="go('/${d}/${i+2}')"><div class="circ">${yArt(i+2)}</div><h3>الفرقة ${n}</h3><p>${dep.subjects[i].length} مواد</p><span class="btn">عرض المواد</span></button>`).join('')+`</div></div>`;
+    return;
+  }
+  const i=+y-2,list=dep.subjects[i];if(!list){go('/'+d);return}
+  const br=BRANCHES[b];
+  if(!br){
+    hT.textContent=`${dep.name} — الفرقة ${YEARS[i]}`;hX.textContent="اختر الفرع";
+    app.innerHTML=crumbs([[dep.name,'/'+d],['الفرقة '+YEARS[i]]],'/'+d)+`<div class="panel"><h2>الفروع</h2><div class="grid g4">`+Object.entries(BRANCHES).map(([k,v])=>
+    `<button class="card" onclick="go('/${d}/${y}/${k}')"><div class="circ">${bArt}</div><h3>${v.name}</h3><p>${v.desc}</p><span class="btn">دخول الفرع</span></button>`).join('')+`</div></div>`;
+    return;
+  }
+  hT.textContent=`${dep.name} — الفرقة ${YEARS[i]}`;hX.textContent=`${br.name} • اختر المادة لبدء الامتحان`;
+  app.innerHTML=crumbs([[dep.name,'/'+d],['الفرقة '+YEARS[i],`/${d}/${y}`],[br.name]],`/${d}/${y}`)+`<div class="panel"><h2>مواد الفرقة ${YEARS[i]} — ${br.name}</h2><div class="list">`+list.map((s,j)=>
+  `<div class="row"><div class="circ sm">${sArt}</div><div class="info"><h3>${s[0]}</h3><small>${br.name} • ${T}</small></div><span class="chip">${s[2]} ${s[3]}</span>${link(s,b)?`<button class="btn" onclick="start('${d}',${i},${j},'${b}')">ابدأ الامتحان</button>`:`<button class="btn" disabled>قريبًا</button>`}</div>`).join('')+`</div></div>`;
+}
+// الرابط ممكن يكون نص واحد لكل الفروع، أو كائن لكل فرع: {mansoura:"..",minyat:"..",mitghamr:".."}
+const link=(s,b)=>{const l=LINKS[s[0]];return (l&&l[b])||(typeof s[1]==='string'?s[1]:'')};
+function start(d,i,j,b){const u=link(DEPTS[d].subjects[i][j],b);if(u)window.open(u,"_blank","noopener")}
+addEventListener('hashchange',render);render();
+</script>
+</body>
+</html>
